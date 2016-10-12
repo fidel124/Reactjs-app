@@ -1,0 +1,55 @@
+var webpack = require('webpack');
+
+module.exports = {
+	entry:[
+		'script!jquery/dist/jquery.min.js',
+		'script!foundation-sites/dist/foundation.min.js',
+		'./app/app.jsx'
+	],
+	externals:{
+		jquery: 'jQuery'
+	},
+	plugins: [
+		new webpack.ProvidePlugin({
+			'$': 'jquery',
+			'jQuery': 'jquery'
+		})
+	],
+	output:{
+		path: __dirname,
+		filename: './public/bundle.js'
+	},
+	resolve:{
+		root:__dirname,
+		alias:{
+			Main: 'app/components/Main.jsx',
+			Nav: 'app/components/Nav.jsx',
+			Weather: 'app/components/Weather.jsx',
+			WeatherForm: 'app/components/WeatherForm.jsx',
+			WeatherMessage: 'app/components/WeatherMessage.jsx',
+			About: 'app/components/About.jsx',
+			Example: 'app/components/Example.jsx',
+			openWeatherMap: 'app/api/openWeatherMap.jsx',
+			LocalstoreAPI: 'app/api/LocalstoreAPI.jsx',
+			ErrorModal: 'app/components/ErrorModal.jsx',
+			Todo: 'app/components/Todo.jsx',
+			Board: 'app/components/Board.jsx',
+			Linkdata: 'app/components/Linkdata.jsx',
+			Linkview: 'app/components/Linkview.jsx',
+			Linkform: 'app/components/Linkform.jsx'			
+		},
+		extensions: ['','.js', '.jsx']
+	},
+	module:{
+		loaders:[
+			{
+				loader:'babel-loader',
+				query:{
+					presets:['react','es2015']
+				},
+				test: /\.jsx?$/,				
+				exclude: /(node_modules|bower_components)/
+			}
+		]
+	}
+};

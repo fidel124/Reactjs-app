@@ -1,0 +1,4 @@
+To run just do
+
+webpack <enter> to recreate the bundle file.
+node server.js <enter> to run the server.
